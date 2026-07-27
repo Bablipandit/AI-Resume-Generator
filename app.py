@@ -96,7 +96,6 @@ def resume_maker_prompt():
     prompt = f.read()
   return prompt
 
-resume_maker_prompt()
 # ===========GENERATE RESUME========
 prompt = """You are a helpful AI assistant
 with job resume maker, your task is to give
@@ -108,9 +107,39 @@ always use different color or styling"""
 final_prompt = prompt + resume_maker_prompt()
 
 user_details = """user details: given below:
-Give Python Developer Resume"""
+Give Python developer Resume
+name Babli
+i am a AI engineer
+courses Agentic AI and Gen AI
+phone no 7678232349
+email id bablipandit8178@gamil.com
+Technical skill python c c++ javascript CS HTML DSA Ml
+education passed out james convent school
+currently persuing BCA from Institute of Innovation in Technology
+Languages Hindi English"""
 
 query = final_prompt + user_details
+
+
+
+if st.sidebar.button("Change App UI"):
+    with open(file_name, 'r') as f:
+        data = f.read()
+    prompt = f"""Your taks is to pick this code and give 
+    updated UI UX with Dynamic Professional Design, Don't change any existing given code, just give updated
+    streamlit ui ux.
+    Original Code: {data}"""
+    
+    st.download_button(
+    label="Download file",
+    data=data,
+    file_name="app.py",
+    mime="text/plain")
+    response = model.invoke(prompt)
+    file_name = 'app.py'
+    with open(file_name, 'w') as f:
+        f.write(response.content[-1]['text'])
+
 
 if st.button("Generate Resume"):
   with st.spinner("Running Agent...."):
