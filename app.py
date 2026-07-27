@@ -107,7 +107,16 @@ always use different color or styling"""
 final_prompt = prompt + resume_maker_prompt()
 
 user_details = """user details: given below:
-Give Python Developer Resume"""
+Give Python Developer Resume
+name Babli
+AI engineer
+courses Agentic AI and Gen AI
+phone no 7678232349
+email id bablipandit8178@gamil.com
+Technical skill python c c++ javascript CSS HTML DSA
+education passed out james convent school
+currently persuing BCA from Institute of Innovation in Technology
+Languages Hindi English"""
 
 query = final_prompt + user_details
 
